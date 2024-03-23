@@ -1,0 +1,175 @@
+<% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="../stylesheets/explore.css">
+    <div id="right">
+        <div id="explore-center">
+            <% arrangedPosts.forEach((arr, index) => { %>
+                <div id="ec-one-box">
+                    <% if(index%2 === 0){ %>
+                        <% arr.forEach((item, index2) => { %>
+                            <% if(index2 === 0){ %>
+                                <div id="explore-center-left">
+                                    <% item.forEach((post) => { %>
+                                        <% if(post.image.slice(post.image.lastIndexOf('.') + 1) !== 'mp4'){ %>
+                                            <a href="">
+                                                <div class="post">
+                                                    <div class="post-overlay">
+                                                        <p><i class="ri-heart-line"></i> <span><%= post.likes.length %></span></p>
+                                                        <p><i class="ri-chat-3-fill"> <span><%= post.comments.length %></span></i></p>
+                                                    </div>
+                                                    <img src="../images/postuploads/<%= post.image %>" alt="">
+                                                </div>
+                                            </a>
+                                        <% }else{ %>
+                                            <a href="">
+                                                <div class="post">
+                                                    <div class="post-overlay">
+                                                        <p><i class="ri-heart-line"></i> <span><%= post.likes.length %></span></p>
+                                                        <p><i class="ri-chat-3-fill"> <span><%= post.comments.length %></span></i></p>
+                                                    </div>
+                                                    <video src="../images/postuploads/<%= post.image %>"></video>
+                                                    <svg aria-label="Reels" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24"
+                                                        role="img" viewBox="0 0 24 24" width="24">
+                                                        <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                                            x1="2.049" x2="21.95" y1="7.002" y2="7.002"></line>
+                                                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" x1="13.504" x2="16.362" y1="2.001" y2="7.002"></line>
+                                                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" x1="7.207" x2="10.002" y1="2.11" y2="7.002"></line>
+                                                        <path
+                                                            d="M2 12.001v3.449c0 2.849.698 4.006 1.606 4.945.94.908 2.098 1.607 4.946 1.607h6.896c2.848 0 4.006-.699 4.946-1.607.908-.939 1.606-2.096 1.606-4.945V8.552c0-2.848-.698-4.006-1.606-4.945C19.454 2.699 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.546 2 5.704 2 8.552Z"
+                                                            fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"></path>
+                                                        <path
+                                                            d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z"
+                                                            fill-rule="evenodd"></path>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        <% } %>
+                                        <!-- post render krwao -->
+                                    <% }) %>
+                                </div>
+                            <% }else{ %>
+                                <% if(item !== undefined){ %>
+                                    <a href="">
+                                        <div class="reel">
+                                            <svg aria-label="Reels" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24"
+                                                role="img" viewBox="0 0 24 24" width="24">
+                                                <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="2.049"
+                                                    x2="21.95" y1="7.002" y2="7.002"></line>
+                                                <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" x1="13.504" x2="16.362" y1="2.001" y2="7.002"></line>
+                                                <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" x1="7.207" x2="10.002" y1="2.11" y2="7.002"></line>
+                                                <path
+                                                    d="M2 12.001v3.449c0 2.849.698 4.006 1.606 4.945.94.908 2.098 1.607 4.946 1.607h6.896c2.848 0 4.006-.699 4.946-1.607.908-.939 1.606-2.096 1.606-4.945V8.552c0-2.848-.698-4.006-1.606-4.945C19.454 2.699 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.546 2 5.704 2 8.552Z"
+                                                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2"></path>
+                                                <path
+                                                    d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z"
+                                                    fill-rule="evenodd"></path>
+                                            </svg>
+                                            <video src="../images/postuploads/<%= item.image %>"></video>
+                                            <div class="post-overlay">
+                                                <p><i class="ri-heart-line"></i> <span>
+                                                    <%= item.likes.length %>
+                                                    </span></p>
+                                                <p><i class="ri-chat-3-fill"> <span>
+                                                    <%= item.comments.length %>
+                                                        </span></i></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- reel render krwao -->
+                                <% } %>
+                            <% } %>
+                        <% }) %>
+                    <% }else{ %>
+                        <% arr.forEach((item, index2) => { %>
+                            <% if(index2 === 0){ %>
+                                <% if(item !== undefined){ %>
+                                    <a href="">
+                                        <div class="reel">
+                                            <svg aria-label="Reels" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24"
+                                                role="img" viewBox="0 0 24 24" width="24">
+                                                <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="2.049"
+                                                    x2="21.95" y1="7.002" y2="7.002"></line>
+                                                <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" x1="13.504" x2="16.362" y1="2.001" y2="7.002"></line>
+                                                <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" x1="7.207" x2="10.002" y1="2.11" y2="7.002"></line>
+                                                <path
+                                                    d="M2 12.001v3.449c0 2.849.698 4.006 1.606 4.945.94.908 2.098 1.607 4.946 1.607h6.896c2.848 0 4.006-.699 4.946-1.607.908-.939 1.606-2.096 1.606-4.945V8.552c0-2.848-.698-4.006-1.606-4.945C19.454 2.699 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.546 2 5.704 2 8.552Z"
+                                                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2"></path>
+                                                <path
+                                                    d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z"
+                                                    fill-rule="evenodd"></path>
+                                            </svg>
+                                            <video src="../images/postuploads/<%= item.image %>"></video>
+                                            <div class="post-overlay">
+                                                <p><i class="ri-heart-line"></i> <span>
+                                                    <%= item.likes.length %>
+                                                    </span></p>
+                                                <p><i class="ri-chat-3-fill"> <span>
+                                                    <%= item.comments.length %>
+                                                        </span></i></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- reel render krwao -->
+                                <% } %>
+                            <% }else{ %>
+                                <div id="explore-center-left">
+                                    <% item.forEach((post) => { %>
+                                        <% if(post.image.slice(post.image.lastIndexOf('.') + 1) !== 'mp4'){ %>
+                                            <a href="">
+                                                <div class="post">
+                                                    <div class="post-overlay">
+                                                        <p><i class="ri-heart-line"></i> <span><%= post.likes.length %></span></p>
+                                                        <p><i class="ri-chat-3-fill"> <span><%= post.comments.length %></span></i></p>
+                                                    </div>
+                                                    <img src="../images/postuploads/<%= post.image %>" alt="">
+                                                </div>
+                                            </a>
+                                        <% }else{ %>
+                                            <a href="">
+                                                <div class="post">
+                                                    <div class="post-overlay">
+                                                        <p><i class="ri-heart-line"></i> <span><%= post.likes.length %></span></p>
+                                                        <p><i class="ri-chat-3-fill"> <span><%= post.comments.length %></span></i></p>
+                                                    </div>
+                                                    <video src="../images/postuploads/<%= post.image %>"></video>
+                                                    <svg aria-label="Reels" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24"
+                                                        role="img" viewBox="0 0 24 24" width="24">
+                                                        <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                                            x1="2.049" x2="21.95" y1="7.002" y2="7.002"></line>
+                                                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" x1="13.504" x2="16.362" y1="2.001" y2="7.002"></line>
+                                                        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" x1="7.207" x2="10.002" y1="2.11" y2="7.002"></line>
+                                                        <path
+                                                            d="M2 12.001v3.449c0 2.849.698 4.006 1.606 4.945.94.908 2.098 1.607 4.946 1.607h6.896c2.848 0 4.006-.699 4.946-1.607.908-.939 1.606-2.096 1.606-4.945V8.552c0-2.848-.698-4.006-1.606-4.945C19.454 2.699 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.546 2 5.704 2 8.552Z"
+                                                            fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"></path>
+                                                        <path
+                                                            d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z"
+                                                            fill-rule="evenodd"></path>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        <% } %>
+                                        <!-- post render krwao  -->
+                                    <% }) %>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <script>
+        console.log("hey")
+    </script>
+    <% include ./partials/footer.ejs %>

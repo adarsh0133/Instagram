@@ -1,0 +1,153 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+#right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3vh;
+    overflow-y: auto;
+}
+
+#explore-center{
+    width: 60.6vw;
+    height: 100%;
+    /* background-color: #fff; */
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    gap: .35vw;
+}
+
+#ec-one-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+#explore-center-left{
+    width: 40.3vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .3vw;
+}
+
+.post{
+    width: 20vw;
+    height: 20vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.5vw;
+    display: none;
+}
+
+.post:hover .post-overlay, .reel:hover .post-overlay{
+    display: flex;
+}
+
+.post img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post svg{
+    position: absolute;
+    top: 3%;
+    left: 88%;
+    color: #fff;
+    width: 2vw;
+    height: 2vw;
+}
+
+.reel{
+    width: 20vw;
+    height: 40.3vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.reel svg{
+    position: absolute;
+    top: 1%;
+    left: 88%;
+    color: #fff;
+    width: 2vw;
+    height: 2vw;
+}
+
+.reel video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.filler{
+    width: 20vw;
+    height: 40.25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media(max-width: 500px){
+    #right{
+        width: 100%;
+    }
+
+    #explore-center {
+        width: 100%;
+    }
+
+    #explore-center-left {
+        width: 66.3vw;
+        gap: .7vw;
+    }
+
+    .post {
+        width: 32.8vw;
+        height: 32.8vw;
+    }
+
+    .reel{
+        width: 32.7vw;
+        height: 66.3vw;
+        background-color: red;
+    }
+}

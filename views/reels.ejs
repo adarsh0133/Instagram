@@ -1,0 +1,287 @@
+<% include ./partials/header.ejs %>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/reels.css">
+    <div id="right">
+        <div class="reels-container" id="reels-container">
+            <% reels.reverse().forEach((reel)=> { %>
+                <div class="reel">
+                    <div class="reel-content">
+                        <video src="../images/postuploads/<%= reel.image %>"></video>
+                        <div class="reel-uploader-dets">
+                            <div class="rud-user">
+                                <div class="rud-user-dp">
+                                    <img src="../images/profilepicuploads/<%= reel.user.profile %>" alt="">
+                                </div>
+                                <a href="">
+                                    <%= reel.user.username %>&nbsp;&nbsp;&nbsp;·
+                                </a>
+                                <a href="">Follow</a>
+                            </div>
+                            <p>
+                                <%= reel.caption %>
+                            </p>
+                            <p><svg aria-label="Audio image" class="x1lliihq x1n2onr6 x9bdzbf" fill="currentColor"
+                                    height="12" role="img" viewBox="0 0 24 24" width="12">
+                                    <title>Audio image</title>
+                                    <path
+                                        d="M18.5 4h-9a1.5 1.5 0 0 0 0 3h5.379L4.293 17.586a1.5 1.5 0 1 0 2.121 2.121L17 9.121V14.5a1.5 1.5 0 0 0 3 0v-9A1.5 1.5 0 0 0 18.5 4Z">
+                                    </path>
+                                </svg>&nbsp;&nbsp;&nbsp;<%= reel.user.username %>&nbsp; ·&nbsp; Original audio</p>
+                        </div>
+                        <!-- <div class="mute-btn">
+                            <svg aria-label="Audio is muted" class="x1lliihq x1n2onr6 xq3z1fi" fill="currentColor"
+                                height="16" role="img" viewBox="0 0 48 48" width="16">
+                                <title>Audio is muted</title>
+                                <path clip-rule="evenodd"
+                                    d="M1.5 13.3c-.8 0-1.5.7-1.5 1.5v18.4c0 .8.7 1.5 1.5 1.5h8.7l12.9 12.9c.9.9 2.5.3 2.5-1v-9.8c0-.4-.2-.8-.4-1.1l-22-22c-.3-.3-.7-.4-1.1-.4h-.6zm46.8 31.4-5.5-5.5C44.9 36.6 48 31.4 48 24c0-11.4-7.2-17.4-7.2-17.4-.6-.6-1.6-.6-2.2 0L37.2 8c-.6.6-.6 1.6 0 2.2 0 0 5.7 5 5.7 13.8 0 5.4-2.1 9.3-3.8 11.6L35.5 32c1.1-1.7 2.3-4.4 2.3-8 0-6.8-4.1-10.3-4.1-10.3-.6-.6-1.6-.6-2.2 0l-1.4 1.4c-.6.6-.6 1.6 0 2.2 0 0 2.6 2 2.6 6.7 0 1.8-.4 3.2-.9 4.3L25.5 22V1.4c0-1.3-1.6-1.9-2.5-1L13.5 10 3.3-.3c-.6-.6-1.5-.6-2.1 0L-.2 1.1c-.6.6-.6 1.5 0 2.1L4 7.6l26.8 26.8 13.9 13.9c.6.6 1.5.6 2.1 0l1.4-1.4c.7-.6.7-1.6.1-2.2z"
+                                    fill-rule="evenodd"></path>
+                            </svg>
+                        </div> -->
+                    </div>
+                    <div class="reel-interaction-btns">
+                        <div class="reel-likes">
+                            <% if(reel.likes.indexOf(loggedInUser.username)===-1){ %>
+                                <i class="ri-heart-line" id="like-heart-<%= reel._id %>"
+                                    onclick="like('<%= reel._id %>', '<%= reel.likes.length %>')"></i>
+                                <% }else{ %>
+                                    <i class="ri-heart-fill" id="unlike-heart-<%= reel._id %>"
+                                        onclick="unlike('<%= reel._id %>', '<%= reel.likes.length %>')"></i>
+                                    <% } %>
+                                        <span class="reel-likes-count" id="reel-<%= reel._id %>">
+                                            <%= reel.likes.length %>
+                                        </span>
+                        </div>
+                        <div class="reel-comments" onclick="viewComments('<%= reel._id %>')">
+                            <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24"
+                                role="img" viewBox="0 0 24 24" width="24">
+                                <title>Comment</title>
+                                <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none"
+                                    stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            <span class="reel-comments-count"><%= reel.comments.length %></span>
+                        </div>
+                        <div class="reel-share">
+                            <svg aria-label="Share Post" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor"
+                                height="24" role="img" viewBox="0 0 24 24" width="24">
+                                <title>Share Post</title>
+                                <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22"
+                                    x2="9.218" y1="3" y2="10.083"></line>
+                                <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
+                                    stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
+                            </svg>
+                        </div>
+                        <div class="reel-more-option">
+                            <svg aria-label="More options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor"
+                                height="24" role="img" viewBox="0 0 24 24" width="24">
+                                <title>More options</title>
+                                <circle cx="12" cy="12" r="1.5"></circle>
+                                <circle cx="6" cy="12" r="1.5"></circle>
+                                <circle cx="18" cy="12" r="1.5"></circle>
+                            </svg>
+                        </div>
+                        <div class="reel-save">
+                            <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24"
+                                role="img" viewBox="0 0 24 24" width="24">
+                                <title>Save</title>
+                                <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+                <% }) %>
+
+        </div>
+        <div class="reel-comment-section">
+            <div class="reel-comment-section-nav">
+                <svg aria-label="Close" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="16" role="img"
+                    viewBox="0 0 24 24" width="16">
+                    <title>Close</title>
+                    <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" x1="21" x2="3" y1="3" y2="21"></line>
+                    <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" x1="21" x2="3" y1="21" y2="3"></line>
+                </svg>
+                <h4>Comments</h4>
+                <span></span>
+            </div>
+            <div class="all-comments">
+                
+            </div>
+            <form class="reel-comment-form">
+                <div class="logged-in-user-dp-rc">
+                    <img src="../images/profilepicuploads/<%= loggedInUser.profile %>" alt="">
+                </div>
+                <textarea placeholder="Add a comment..."></textarea>
+                <input type="submit" value="Post">
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        const reelsContainer = document.getElementById('reels-container');
+        const reelHeight = document.querySelector('.reel').offsetHeight;
+        const reelsVid = document.querySelectorAll('.reel video');
+        let isScrolling;
+        const videos = document.querySelectorAll('.reel-content video');
+        let activeVideo = null;
+
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function pauseAllVideos() {
+            videos.forEach(video => {
+                video.pause();
+            });
+        }
+
+        function handleScroll() {
+            let found = false;
+            videos.forEach(video => {
+                if (!found && isElementInViewport(video)) {
+                    found = true;
+                    if (activeVideo !== video) {
+                        if (activeVideo) {
+                            activeVideo.pause();
+                        }
+                        activeVideo = video;
+                        video.play();
+                        video.loop = true
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+        }
+
+        reelsContainer.addEventListener('wheel', function (event) {
+            reelsContainer.scrollBy({
+                top: event.deltaY,
+                behavior: 'auto'
+            });
+
+            clearTimeout(isScrolling);
+            isScrolling = setTimeout(function () {
+                const currentScroll = reelsContainer.scrollTop;
+                const closestReel = Math.round(currentScroll / reelHeight) * reelHeight;
+                console.log(closestReel)
+
+                reelsContainer.scrollTo({
+                    top: closestReel,
+                    behavior: 'auto'
+                });
+            }, 60);
+
+            event.preventDefault();
+            hideComments()
+        });
+
+        reelsContainer.addEventListener('scroll', function () {
+            clearTimeout(isScrolling);
+            isScrolling = setTimeout(function () {
+                const currentScroll = reelsContainer.scrollTop;
+                const closestReel = Math.round(currentScroll / reelHeight) * reelHeight;
+
+                reelsContainer.scrollTo({
+                    top: closestReel,
+                    behavior: 'auto'
+                });
+            }, 60);
+            handleScroll()
+        });
+
+        window.addEventListener("click", () => handleScroll())
+
+        var flag = true;
+
+        function like(postId, postLikes) {
+            if (flag) {
+                const likeHeart = document.getElementById(`like-heart-${postId}`);
+                likeHeart.classList.remove('ri-heart-line');
+                likeHeart.classList.add('ri-heart-fill');
+                document.querySelector(`#reel-${postId}`).textContent = Number(postLikes) + 1
+                flag = false;
+            } else {
+                const likeHeart = document.getElementById(`like-heart-${postId}`);
+                likeHeart.classList.remove('ri-heart-fill');
+                likeHeart.classList.add('ri-heart-line');
+                document.querySelector(`#reel-${postId}`).textContent = postLikes
+                flag = true;
+            }
+            axios.get(`/like/${postId}`)
+        }
+
+        function unlike(postId, postLikes) {
+            if (flag) {
+                const unlikeHeart = document.getElementById(`unlike-heart-${postId}`);
+                unlikeHeart.classList.remove('ri-heart-fill');
+                unlikeHeart.classList.add('ri-heart-line');
+                document.querySelector(`#reel-${postId}`).textContent = postLikes - 1
+                flag = false;
+
+            } else {
+                const unlikeHeart = document.getElementById(`unlike-heart-${postId}`);
+                unlikeHeart.classList.remove('ri-heart-line');
+                unlikeHeart.classList.add('ri-heart-fill');
+                document.querySelector(`#reel-${postId}`).textContent = postLikes
+                flag = true;
+            }
+            axios.get(`/like/${postId}`)
+        }
+
+        var commentSection = document.querySelector(".reel-comment-section")
+        var commentSectionClose = document.querySelector(".reel-comment-section-nav svg")
+
+
+        function viewComments(postId) {
+            commentSection.style.display = "initial"
+            var clutter = ``
+            axios.get(`/getcomments/${postId}`).then((res) => {
+                if (res.data.comments.length > 0) {
+                    res.data.comments.reverse().forEach((comment) => {
+                        clutter += `<div class="reel-single-comment">
+                    <div class="rsc-user-dp">
+                        <img src="../images/profilepicuploads/${comment.user.profile}" alt="">
+                    </div>
+                    <div class="rsc-right">
+                        <p><a href="/profile/${comment.user.username}">${comment.user.username}</a> &nbsp;${comment.comment}</p>
+                        <i class="ri-heart-line"></i>
+                    </div>
+                </div>`
+                    })
+                }
+                document.querySelector(".all-comments").innerHTML = clutter
+            })
+        }
+
+        function addComment(postId, commentsCount) {
+            var commentForm = document.querySelector(`#reel-comment-form-${postId}`);
+            var newcomment = document.querySelector(`#comment-area-${postId}`).value
+            commentForm.addEventListener("submit", function (e) {
+                e.preventDefault()
+                axios.post(`/addcomment/${postId}`, { newcomment: newcomment })
+                document.querySelector(`#comment-area-${postId}`).value = ""
+                document.querySelector(`#comments-count-${postId}`).textContent = Number(commentsCount) + 1
+            })
+        }
+
+        function hideComments() {
+            commentSection.style.display = "none"
+            document.querySelector(".all-comments").innerHTML = ``
+        }
+
+        commentSectionClose.addEventListener("click", () => {
+            hideComments()
+        })
+
+    </script>
+
+    <% include ./partials/footer.ejs %>

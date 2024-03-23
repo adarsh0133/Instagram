@@ -1,0 +1,375 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+#right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.reels-container{
+    width: 32vw;
+    height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: visible;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) .5s;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.reels-container::-webkit-scrollbar{
+    display: none;
+}
+
+.reel{
+    width: 100%;
+    height: 90%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    scroll-snap-align: center;
+    overflow-x: visible;
+}
+
+.reel-content{
+    width: 86%;
+    height: 100%;
+    background-color: #262626;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0px 35px 0px rgba(255, 255, 255, 0.142);
+}
+
+.reel-content video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.reel-uploader-dets{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 15px;
+}
+
+.rud-user{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    gap: 15px;
+}
+
+.rud-user-dp{
+    width: 2.2vw;
+    height: 2.2vw;
+    background-color: rgb(168, 168, 168);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.rud-user-dp img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.rud-user a{
+    font-size: 1vw;
+    text-decoration: none;
+    color: #fff;
+}
+
+.rud-user a:nth-child(3){
+    border: 1px solid rgb(168, 168, 168);
+    padding: 4px 7px;
+    border-radius: 4px;
+    font-size: .8vw;
+}
+
+.reel-uploader-dets>p{
+    color: #fff;
+    font-size: .95vw;
+}
+
+.reel-uploader-dets>p:nth-child(2){
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.reel-interaction-btns{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-bottom: 15px;
+}
+
+.reel-likes, .reel-comments{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reel-interaction-btns svg{
+    width: 1.7vw;
+    height: 1.7vw;
+    color: #fff;
+    cursor: pointer;
+}
+
+.reel-interaction-btns i{
+    font-size: 2.1vw;
+    cursor: pointer;
+}
+
+.reel-interaction-btns .ri-heart-line{
+    margin-bottom: -2px;
+}
+
+.reel-interaction-btns span{
+    color: #fff;
+    font-weight: 400;
+    font-size: .9vw;
+}
+
+.mute-btn{
+    position: absolute;
+    top: 2%;
+    left: 93%;
+    cursor: pointer;
+}
+
+.mute-btn svg{
+    color: #fff;
+}
+
+.ri-heart-fill{    
+    color: #FF3040;
+}
+
+.ri-heart-line{    
+    color: #fff;
+}
+
+.reel-comment-section{
+    width: 22vw;
+    height: 60vh;
+    z-index: 9;
+    background-color: #262626;
+    position: absolute;
+    left: 70%;
+    top: 10%;
+    color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    display: none;
+}
+
+.reel-comment-section-nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.reel-comment-section-nav svg{
+    width: 1vw;
+    height: 1vw;
+    cursor: pointer;
+}
+
+.reel-comment-section-nav h4{
+    font-size: 1.1vw;
+    font-weight: 600;
+}
+
+.all-comments{
+    width: 100%;
+    height: 72%;
+    overflow-y: auto;
+}
+
+.all-comments::-webkit-scrollbar{
+    background-color: rgb(42, 42, 42);
+}
+
+.all-comments::-webkit-scrollbar-thumb{
+    background-color: rgb(123, 123, 123);
+}
+
+.reel-single-comment{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px 25px;
+}
+
+.rsc-right{
+    display: flex;
+    align-items: center;
+    width: calc(100% - 2.6vw);
+    justify-content: space-between;
+}
+
+.rsc-user-dp{
+    width: 2vw;
+    height: 2vw;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.rsc-user-dp img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.rsc-right p{
+    font-size: .9vw;
+}
+
+.rsc-right p a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+}
+
+.reel-comment-form{
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.reel-comment-form textarea{
+    width: 88%;
+    resize: none;
+    height: 4.5vh;
+    color: #fff;
+    padding: 10px 0 0 35px;
+    border-radius: 50px;
+    background-color: transparent;
+    outline: none;
+    font-size: .9vw;
+}
+
+.reel-comment-form input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: rgb(0, 149, 246);
+}
+
+.logged-in-user-dp-rc{
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 8.5%;
+    overflow: hidden;
+}
+
+.logged-in-user-dp-rc img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media(max-width: 500px){
+    #right{
+        width: 100%;
+    }
+
+    #reels-container{
+        width: 100%;
+    }
+
+    .reel{
+        height: 100%;
+    }
+
+    .reel-interaction-btns {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .reel-content {
+        width: 99.9%;
+        border-radius: 0;
+    }
+
+    .reel-uploader-dets {
+        padding: 25px 15px 70px 15px;
+    }
+
+    .rud-user-dp {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .rud-user a {
+        font-size: 3.7vw;
+    }
+
+    .rud-user a:nth-child(3) {
+        font-size: 3vw;
+    }
+
+    .reel-uploader-dets>p {
+        font-size: 3.7vw;
+    }
+
+    .reel-interaction-btns i {
+        font-size: 8vw;
+    }
+
+    .reel-interaction-btns span {
+        font-size: 4vw;
+    }
+
+    .reel-likes, .reel-comments {
+        gap: 0;
+    }
+
+    .reel-interaction-btns svg {
+        width: 7vw;
+        height: 7vw;
+    }
+
+    .reel-comments svg{
+        margin-bottom: 5px;
+    }
+}
