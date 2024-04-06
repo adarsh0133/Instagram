@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var plm = require('passport-local-mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/finalchallenge');
+mongoose.connect('mongodb+srv://adarsh90399:1234@cluster0.ozglvms.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 var userSchema = mongoose.Schema({
   email: String,
